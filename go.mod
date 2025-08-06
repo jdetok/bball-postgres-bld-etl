@@ -1,4 +1,4 @@
-module github.com/jdetok/szn-bball-etl
+module github.com/jdetok/bball-postgres-bld-etl
 
 go 1.24.3
 
