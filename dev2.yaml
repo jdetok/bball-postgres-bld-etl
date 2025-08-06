@@ -1,0 +1,26 @@
+services:
+  devpgdb1:
+    build: .
+    env_file: 
+      - .env
+    container_name: devpg1
+    ports:
+      - "5437:5432"
+    networks:
+      devpgnet1:
+        ipv4_address: 10.0.30.223
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
+networks:
+  devpgnet1:
+    name: devpgnet1
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.30.0/24
+          gateway: 10.0.30.1
