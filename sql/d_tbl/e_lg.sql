@@ -47,6 +47,15 @@ insert into lg.szn values
     (49999, 4, 'CPO', 'Career Playoffs', 'CPO', 'Career Playoffs'),
     (99999, 9, 'CC', 'Career Combined', 'CC', 'Career Combined');
 
+-- update for jdeko.me agg season labels: 
+update lg.szn set szn_desc = 'Career Regular Season Stats', 
+    wszn_desc = 'Career Regular Season Stats'
+where szn_id = 29999;
+
+update lg.szn set szn_desc = 'Career Post Season Stats', 
+    wszn_desc = 'Career Post Season Stats'
+where szn_id = 49999;
+
 create table lg.team (
     lg_id int references lg.league(lg_id),
     team_id bigint primary key,
