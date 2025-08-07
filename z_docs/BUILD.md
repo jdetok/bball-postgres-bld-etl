@@ -58,5 +58,7 @@ var en string = time.Now().Format("2006") // current year
         - before continuing, an insert statement must be executed to fix an issue with WNBA player Angel Robinson having two separate player ids
     6. stats.sp_pbox()
         - load player box scores into stats.pbox
+        - ** NOTE: insert select now joins to lg.plr to prevent foreign key violations
+            - ** MUST call lg.sp_plr_all_load() before sp_pbox - if not populated, no rows will insert
     7. api.sp_plr_agg()
         - load aggregate season/career player stats into api.plr_agg

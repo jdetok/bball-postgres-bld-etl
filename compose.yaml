@@ -1,21 +1,26 @@
 services:
-  pgdb:
+  pgbball:
     build: .
     env_file: 
       - .env
-    container_name: postgres
+    container_name: pgbball
     ports:
-      - "5432:5432"
+      - "8765:5432"
     networks:
-      pgnet:
-        ipv4_address: 10.0.27.242
+      pgbball-net:
+        ipv4_address: 10.0.37.182
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
 
 networks:
-  pgnet:
-    name: pgnet
+  pgbball-net:
+    name: pgbball-net
     driver: bridge
     ipam:
       config:
-        - subnet: 10.0.27.0/24
-          gateway: 10.0.27.1
+        - subnet: 10.0.37.0/24
+          gateway: 10.0.37.1
