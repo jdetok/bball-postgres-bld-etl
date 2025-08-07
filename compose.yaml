@@ -8,7 +8,7 @@ services:
       - "8765:5432"
     networks:
       pgbball-net:
-        ipv4_address: 10.0.37.182
+        ipv4_address: 10.0.39.182
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
@@ -22,5 +22,5 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.0.37.0/24
-          gateway: 10.0.37.1
+        - subnet: 10.0.39.0/24
+          gateway: 10.0.39.1

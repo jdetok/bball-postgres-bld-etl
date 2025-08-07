@@ -44,8 +44,8 @@ func main() {
 	}
 
 	cnf.DB = db // asign to cnf
-	cnf.DB.SetMaxOpenConns(200)
-	cnf.DB.SetMaxIdleConns(200)
+	cnf.DB.SetMaxOpenConns(100)
+	cnf.DB.SetMaxIdleConns(100)
 	cnf.RowCnt = 0 // START ROW COUNTER AT 0 BEFORE ETL STARTS
 
 	if err = etl.RunSeasonETL(cnf, st, en); err != nil {

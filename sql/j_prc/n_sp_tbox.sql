@@ -32,7 +32,7 @@ begin
             ftm,
             fta,
             ft_pct
-        from intake.gm_team
+        from intake.gm_team -- join here to lg.team /lg.player
     on conflict (game_id, team_id) do nothing;
 end; $$;
 -- call stats.sp_tbox();

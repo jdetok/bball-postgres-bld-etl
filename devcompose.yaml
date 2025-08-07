@@ -1,14 +1,14 @@
 services:
-  devpgdb:
+  pgbballdev:
     build: .
     env_file: 
       - .env
-    container_name: devpg
+    container_name: pgbballdev
     ports:
-      - "5439:5432"
+      - "9877:5432"
     networks:
-      devpgnet:
-        ipv4_address: 10.0.29.223
+      pgdevnet:
+        ipv4_address: 10.0.48.223
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "postgres"]
@@ -17,10 +17,10 @@ services:
       retries: 10
 
 networks:
-  devpgnet:
-    name: devpgnet
+  pgdevnet:
+    name: pgdevnet
     driver: bridge
     ipam:
       config:
-        - subnet: 10.0.29.0/24
-          gateway: 10.0.29.1
+        - subnet: 10.0.48.0/24
+          gateway: 10.0.48.1
